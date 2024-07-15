@@ -1,0 +1,103 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/8/2024 2:40:40 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GIL-LEPTOP"
+  DTS:CreatorName="GIL-LEPTOP\Gil"
+  DTS:DTSID="{9504E129-F3B3-413E-A850-BABC64F5DA51}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{09DBD06C-7720-4E7A-B9DB-3C72F84F7BFB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{06A20CB6-744D-498C-BA14-BF9954269251}"
+      DTS:ObjectName="GIL-LEPTOP\GILEMANUEL">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=GIL-LEPTOP\GILEMANUEL;UseWindowsAuthentication=True;UserName=;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{42B8DDC0-50EA-4EB3-9843-FFA171067C00}"
+      DTS:ObjectName="GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Project::DB]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=GIL-LEPTOP\GILEMANUEL;Initial Catalog=AudioCodes_DEV;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{42B8DDC0-50EA-4EB3-9843-FFA171067C00}GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.PriorityERP]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{56AE5650-C1E6-43E7-952A-571E681CBD80}"
+      DTS:ObjectName="GIL-LEPTOP\GILEMANUEL.PriorityERP">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=GIL-LEPTOP\GILEMANUEL;Initial Catalog=PriorityERP;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{56AE5650-C1E6-43E7-952A-571E681CBD80}GIL-LEPTOP\GILEMANUEL.PriorityERP;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Transfer SQL Server Objects Task"
+      DTS:CreationName="Microsoft.TransferSqlServerObjectsTask"
+      DTS:Description="Transfer SQL Server Objects Task"
+      DTS:DTSID="{0DE4A4D7-75FE-428A-A85F-C65003A9C681}"
+      DTS:ExecutableType="Microsoft.TransferSqlServerObjectsTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer SQL Server Objects Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferSqlServerObjectsTaskData
+          SourceConnection="{06A20CB6-744D-498C-BA14-BF9954269251}"
+          DestinationConnection="{06A20CB6-744D-498C-BA14-BF9954269251}"
+          SourceDatabase="AudioCodes_DEV"
+          DestinationDatabase="AudioCodes_Production"
+          CopyAllObjects="True"
+          DropObjectsFirst="True"
+          CopyData="True"
+          CopyPrimaryKeys="True"
+          CopyForeignKeys="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Transfer SQL Server Objects Task"
+          TopLeft="282.142857743465,94.8235293286482" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

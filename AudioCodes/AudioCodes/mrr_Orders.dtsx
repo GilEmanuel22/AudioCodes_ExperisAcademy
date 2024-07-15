@@ -1,0 +1,1774 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/5/2024 5:30:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GIL-LEPTOP"
+  DTS:CreatorName="GIL-LEPTOP\Gil"
+  DTS:DTSID="{EFA1EC84-A4AD-42A4-94E0-2C40C24572D7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{C3707FC1-AE10-42D0-ACB1-D6D85FEC6748}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5E5AF4E5-73F8-405E-B124-FC2CF5FF2A7F}"
+      DTS:ObjectName="GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Project::DB]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=GIL-LEPTOP\GILEMANUEL;Initial Catalog=AudioCodes_DEV;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{5E5AF4E5-73F8-405E-B124-FC2CF5FF2A7F}GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.PriorityERP]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{578A05F7-F2B6-4652-8A89-9220EEC981C5}"
+      DTS:ObjectName="GIL-LEPTOP\GILEMANUEL.PriorityERP">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=GIL-LEPTOP\GILEMANUEL;Initial Catalog=PriorityERP;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{578A05F7-F2B6-4652-8A89-9220EEC981C5}GIL-LEPTOP\GILEMANUEL.PriorityERP;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0208E424-2868-40BA-A585-2C348DA8CBF0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\INVOICEITEMS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="INVOICEITEMS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[INVOICEITEMS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\INVOICEITEMS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.PriorityERP]"
+                  connectionManagerRefId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.PriorityERP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[IV]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[IV]"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[IV]"
+                      name="IV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[PART]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[PART]"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[PART]"
+                      name="PART"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[PRICE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[PRICE]"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[PRICE]"
+                      name="PRICE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[QUANT]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[QUANT]"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[QUANT]"
+                      name="QUANT"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[IV]"
+                      dataType="i8"
+                      name="IV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[PART]"
+                      dataType="i8"
+                      name="PART" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[PRICE]"
+                      dataType="r8"
+                      name="PRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[QUANT]"
+                      dataType="i8"
+                      name="QUANT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[QPRICE]"
+                      dataType="r8"
+                      name="QPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[CURRENCY]"
+                      dataType="i8"
+                      name="CURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[LINE]"
+                      dataType="i8"
+                      name="LINE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[ORDI]"
+                      dataType="i8"
+                      name="ORDI" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[T$PERCENT]"
+                      dataType="r8"
+                      name="T$PERCENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[UDATE]"
+                      dataType="i8"
+                      name="UDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[T$USER]"
+                      dataType="i8"
+                      name="T$USER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[KLINE]"
+                      dataType="i8"
+                      name="KLINE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[TQUANT]"
+                      dataType="i8"
+                      name="TQUANT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[TUNIT]"
+                      dataType="i8"
+                      name="TUNIT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[PURTAXPERCENT]"
+                      dataType="r8"
+                      name="PURTAXPERCENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[TRANS]"
+                      dataType="i8"
+                      name="TRANS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[TOTPERCENT]"
+                      dataType="r8"
+                      name="TOTPERCENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[NONSTANDARD]"
+                      dataType="i8"
+                      name="NONSTANDARD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[CALQPRICE]"
+                      dataType="r8"
+                      name="CALQPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[SUPPART]"
+                      dataType="i8"
+                      name="SUPPART" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[IVCOST]"
+                      dataType="r8"
+                      name="IVCOST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[DUTYCOST]"
+                      dataType="r8"
+                      name="DUTYCOST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[BUDGET]"
+                      dataType="i8"
+                      name="BUDGET" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[VATFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="VATFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[TYPE]"
+                      dataType="wstr"
+                      length="1"
+                      name="TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[PRSOURCE]"
+                      dataType="wstr"
+                      length="1"
+                      name="PRSOURCE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[STORNOFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="STORNOFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[COSTC]"
+                      dataType="i8"
+                      name="COSTC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[CREDITCOST]"
+                      dataType="r8"
+                      name="CREDITCOST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[ACCOUNT]"
+                      dataType="i8"
+                      name="ACCOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[BRANCH]"
+                      dataType="i8"
+                      name="BRANCH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[IVDATE]"
+                      dataType="i8"
+                      name="IVDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[ICURRENCY]"
+                      dataType="i8"
+                      name="ICURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[IEXCHANGE]"
+                      dataType="r8"
+                      name="IEXCHANGE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[COUNTRY]"
+                      dataType="i8"
+                      name="COUNTRY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[CREDITFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="CREDITFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[AGENT]"
+                      dataType="i8"
+                      name="AGENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[COMMISSION]"
+                      dataType="r8"
+                      name="COMMISSION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].ExternalColumns[XKLINE]"
+                      dataType="i8"
+                      name="XKLINE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[IV]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[IV]"
+                      name="IV" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[PART]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[PART]"
+                      name="PART" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[PRICE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[PRICE]"
+                      name="PRICE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[QUANT]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Error Output].Columns[QUANT]"
+                      name="QUANT" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\INVOICES"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="INVOICES"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[INVOICES]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\INVOICES.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.PriorityERP]"
+                  connectionManagerRefId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.PriorityERP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[IVDATE]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[IVDATE]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[IVDATE]"
+                      name="IVDATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[IV]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[IV]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[IV]"
+                      name="IV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[CUST]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[CUST]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[CUST]"
+                      name="CUST"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[QPRICE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[QPRICE]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[QPRICE]"
+                      name="QPRICE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[TOTPRICE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[TOTPRICE]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[TOTPRICE]"
+                      name="TOTPRICE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[AGENT]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[AGENT]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[AGENT]"
+                      name="AGENT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[BRANCH]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[BRANCH]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[BRANCH]"
+                      name="BRANCH"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[DESTCODE]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[DESTCODE]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[DESTCODE]"
+                      name="DESTCODE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[IVDATE]"
+                      dataType="i8"
+                      name="IVDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[IVNUM]"
+                      dataType="wstr"
+                      length="16"
+                      name="IVNUM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[DOC]"
+                      dataType="i8"
+                      name="DOC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[IV]"
+                      dataType="i4"
+                      name="IV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[QPRICE]"
+                      dataType="r8"
+                      name="QPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[TOTPRICE]"
+                      dataType="r8"
+                      name="TOTPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[CURRENCY]"
+                      dataType="i8"
+                      name="CURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[CUST]"
+                      dataType="i8"
+                      name="CUST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[DEBIT]"
+                      dataType="wstr"
+                      length="1"
+                      name="DEBIT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[IVREF]"
+                      dataType="wstr"
+                      length="10"
+                      name="IVREF" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[VAT]"
+                      dataType="r8"
+                      name="VAT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[UDATE]"
+                      dataType="i8"
+                      name="UDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[T$USER]"
+                      dataType="i8"
+                      name="T$USER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[PRINTED]"
+                      dataType="wstr"
+                      length="1"
+                      name="PRINTED" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[FINAL]"
+                      dataType="wstr"
+                      length="1"
+                      name="FINAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[ORD]"
+                      dataType="i8"
+                      name="ORD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[DISCOUNT]"
+                      dataType="r8"
+                      name="DISCOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[DISPRICE]"
+                      dataType="r8"
+                      name="DISPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[MONTHLY]"
+                      dataType="wstr"
+                      length="1"
+                      name="MONTHLY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[PAY]"
+                      dataType="i8"
+                      name="PAY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[FNCPATTERN]"
+                      dataType="i8"
+                      name="FNCPATTERN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[PAYDATE]"
+                      dataType="i8"
+                      name="PAYDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[FNCTRANS]"
+                      dataType="i8"
+                      name="FNCTRANS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[BOOKNUM]"
+                      dataType="wstr"
+                      length="16"
+                      name="BOOKNUM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[AGENT]"
+                      dataType="i8"
+                      name="AGENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[PIV]"
+                      dataType="i8"
+                      name="PIV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[CALQPRICE]"
+                      dataType="r8"
+                      name="CALQPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[TYPE]"
+                      dataType="wstr"
+                      length="1"
+                      name="TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[CHECKING]"
+                      dataType="wstr"
+                      length="1"
+                      name="CHECKING" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[IMPFILE]"
+                      dataType="i8"
+                      name="IMPFILE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[IMPFIVTYPE]"
+                      dataType="wstr"
+                      length="1"
+                      name="IMPFIVTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[CASH]"
+                      dataType="i8"
+                      name="CASH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[TOCASH]"
+                      dataType="i8"
+                      name="TOCASH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[NOVATPRICE]"
+                      dataType="r8"
+                      name="NOVATPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[VATPRICE]"
+                      dataType="r8"
+                      name="VATPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[WARHS]"
+                      dataType="i8"
+                      name="WARHS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[TOWARHS]"
+                      dataType="i8"
+                      name="TOWARHS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[LCURRENCY]"
+                      dataType="i8"
+                      name="LCURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[LEXCHANGE]"
+                      dataType="r8"
+                      name="LEXCHANGE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[WTAX]"
+                      dataType="r8"
+                      name="WTAX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[AFTERWTAX]"
+                      dataType="r8"
+                      name="AFTERWTAX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[WTAXPERCENT]"
+                      dataType="r8"
+                      name="WTAXPERCENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[IVBALANCE]"
+                      dataType="r8"
+                      name="IVBALANCE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[ADVFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="ADVFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[ACCOUNT]"
+                      dataType="i8"
+                      name="ACCOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[CASHPAYMENT]"
+                      dataType="r8"
+                      name="CASHPAYMENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[STORNOFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="STORNOFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[TAX]"
+                      dataType="i8"
+                      name="TAX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[INTERNAL]"
+                      dataType="wstr"
+                      length="1"
+                      name="INTERNAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[BRANCH]"
+                      dataType="i8"
+                      name="BRANCH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[LIV]"
+                      dataType="i8"
+                      name="LIV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[ADJPRICEFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="ADJPRICEFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[FNCITEMSFLAG]"
+                      dataType="wstr"
+                      length="1"
+                      name="FNCITEMSFLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[DETAILS]"
+                      dataType="wstr"
+                      length="24"
+                      name="DETAILS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[OWNER]"
+                      dataType="i8"
+                      name="OWNER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[PHONE]"
+                      dataType="i8"
+                      name="PHONE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[DESTCODE]"
+                      dataType="i8"
+                      name="DESTCODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[SHIPTYPE]"
+                      dataType="i8"
+                      name="SHIPTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[BALDATE]"
+                      dataType="i8"
+                      name="BALDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[PLIST]"
+                      dataType="i8"
+                      name="PLIST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[T$PERCENT]"
+                      dataType="r8"
+                      name="T$PERCENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[PACK]"
+                      dataType="i8"
+                      name="PACK" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[MWEIGHT]"
+                      dataType="r8"
+                      name="MWEIGHT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[WEIGHT]"
+                      dataType="r8"
+                      name="WEIGHT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[AIRWAYBILL]"
+                      dataType="wstr"
+                      length="20"
+                      name="AIRWAYBILL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[PATTERN]"
+                      dataType="i8"
+                      name="PATTERN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[PATKLINE]"
+                      dataType="i8"
+                      name="PATKLINE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[UDATESECONDS]"
+                      dataType="i8"
+                      name="UDATESECONDS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[TAXSUM]"
+                      dataType="r8"
+                      name="TAXSUM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[IVCODEID]"
+                      dataType="i8"
+                      name="IVCODEID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[IVDATE]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[IVDATE]"
+                      name="IVDATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[IV]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[IV]"
+                      name="IV" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[CUST]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[CUST]"
+                      name="CUST" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[QPRICE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[QPRICE]"
+                      name="QPRICE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[TOTPRICE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[TOTPRICE]"
+                      name="TOTPRICE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[AGENT]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[AGENT]"
+                      name="AGENT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[BRANCH]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[BRANCH]"
+                      name="BRANCH" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[DESTCODE]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Error Output].Columns[DESTCODE]"
+                      name="DESTCODE" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[mrr_Invoices]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[mrr_Invoices]) [refTable]
+where [refTable].[IV] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IVDATE" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IV" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CUST" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="QPRICE" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TOTPRICE" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AGENT" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BRANCH" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DESTCODE" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[IV]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV]"
+                  connectionManagerRefId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[IV]"
+                      cachedDataType="i4"
+                      cachedName="IV"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[IV]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">IV</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Lookup 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[mrr_InvoiceItems]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[mrr_InvoiceItems]) [refTable]
+where [refTable].[IV] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IV" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PART" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PRICE" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="QUANT" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[IV]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV]"
+                  connectionManagerRefId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup 1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup 1.Inputs[Lookup Input].Columns[IV]"
+                      cachedDataType="i8"
+                      cachedName="IV"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[IV]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">IV</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup 1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup 1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup 1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\mrr_InvoiceItems"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="mrr_InvoiceItems"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[mrr_InvoiceItems]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\mrr_InvoiceItems.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV]"
+                  connectionManagerRefId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].Columns[IV]"
+                      cachedDataType="i8"
+                      cachedName="IV"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].ExternalColumns[IV]"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[IV]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].Columns[PART]"
+                      cachedDataType="i8"
+                      cachedName="PART"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].ExternalColumns[PART]"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[PART]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].Columns[PRICE]"
+                      cachedDataType="r8"
+                      cachedName="PRICE"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].ExternalColumns[PRICE]"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[PRICE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].Columns[QUANT]"
+                      cachedDataType="i8"
+                      cachedName="QUANT"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].ExternalColumns[QUANT]"
+                      lineageId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output].Columns[QUANT]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].ExternalColumns[IV]"
+                      dataType="i8"
+                      name="IV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].ExternalColumns[PART]"
+                      dataType="i8"
+                      name="PART" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].ExternalColumns[PRICE]"
+                      dataType="r8"
+                      name="PRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input].ExternalColumns[QUANT]"
+                      dataType="i8"
+                      name="QUANT" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\mrr_InvoiceItems.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\mrr_InvoiceItems.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\mrr_InvoiceItems.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\mrr_InvoiceItems.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\mrr_InvoiceItems.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\mrr_Invoices"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="mrr_Invoices"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[mrr_Invoices]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\mrr_Invoices.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV]"
+                  connectionManagerRefId="Package.ConnectionManagers[GIL-LEPTOP\GILEMANUEL.AudioCodes_DEV]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].Columns[IVDATE]"
+                      cachedDataType="i8"
+                      cachedName="IVDATE"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[IVDATE]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[IVDATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].Columns[IV]"
+                      cachedDataType="i4"
+                      cachedName="IV"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[IV]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[IV]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].Columns[CUST]"
+                      cachedDataType="i8"
+                      cachedName="CUST"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[CUST]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[CUST]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].Columns[QPRICE]"
+                      cachedDataType="r8"
+                      cachedName="QPRICE"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[QPRICE]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[QPRICE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].Columns[TOTPRICE]"
+                      cachedDataType="r8"
+                      cachedName="TOTPRICE"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[TOTPRICE]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[TOTPRICE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].Columns[AGENT]"
+                      cachedDataType="i8"
+                      cachedName="AGENT"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[AGENT]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[AGENT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].Columns[BRANCH]"
+                      cachedDataType="i8"
+                      cachedName="BRANCH"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[BRANCH]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[BRANCH]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].Columns[DESTCODE]"
+                      cachedDataType="i8"
+                      cachedName="DESTCODE"
+                      externalMetadataColumnId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[DESTCODE]"
+                      lineageId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output].Columns[DESTCODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[IVDATE]"
+                      dataType="i8"
+                      name="IVDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[IV]"
+                      dataType="i4"
+                      name="IV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[CUST]"
+                      dataType="i8"
+                      name="CUST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[QPRICE]"
+                      dataType="r8"
+                      name="QPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[TOTPRICE]"
+                      dataType="r8"
+                      name="TOTPRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[AGENT]"
+                      dataType="i8"
+                      name="AGENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[BRANCH]"
+                      dataType="i8"
+                      name="BRANCH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input].ExternalColumns[DESTCODE]"
+                      dataType="i8"
+                      name="DESTCODE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\mrr_Invoices.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\mrr_Invoices.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\mrr_Invoices.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\mrr_Invoices.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task\mrr_Invoices.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output1]"
+              endId="Package\Data Flow Task\mrr_InvoiceItems.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\Lookup 1.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\INVOICES.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+              endId="Package\Data Flow Task\Lookup 1.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\INVOICEITEMS.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="181.428571814785,124.647058714271" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\Data Flow Task\mrr_Invoices"
+          TopLeft="92.1428573390051,247.764705665177" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task\INVOICEITEMS"
+          TopLeft="251.428571963797,74.176470523217" />
+        <NodeLayout
+          Size="125.6,41.6"
+          Id="Package\Data Flow Task\INVOICES"
+          TopLeft="103.571428791905,73.4117646415341" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Data Flow Task\mrr_InvoiceItems"
+          TopLeft="252.142857679603,242.858823355805" />
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Data Flow Task\Lookup"
+          TopLeft="108.571428802549,156.235294015762" />
+        <NodeLayout
+          Size="121.6,41.6"
+          Id="Package\Data Flow Task\Lookup 1"
+          TopLeft="268.571429143146,157.764705779128" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="165.671428797227,115.011764641534">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.2235293742282"
+              Start="0,0"
+              End="0,33.7235293742282">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.7235293742282" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="163.557143070777,197.835294015762">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.9294116494149"
+              Start="0,0"
+              End="0,42.4294116494149">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.4294116494149" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,15.4100183247075,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+          TopLeft="328.000000553472,115.776470523217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.9882352559106"
+              Start="0,0"
+              End="0,34.4882352559106">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.4882352559106" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output1]"
+          TopLeft="331.157143411375,199.364705779128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.4941175766772"
+              Start="0,0"
+              End="0,35.9941175766772">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.9941175766772" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,12.1923712883386,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\mrr_Invoices">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\INVOICEITEMS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\INVOICES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\mrr_InvoiceItems">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[mrr_Invoices]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[mrr_InvoiceItems]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
